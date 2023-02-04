@@ -1,6 +1,7 @@
-package com.cydeo.tests;
+package com.cydeo.tests.day08_properties_config_reader;
 
 import com.cydeo.utilities.WebDriverFactory;
+import com.cydeo.utilities.WebOrderUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -65,8 +66,27 @@ public class T1_WebTable_Order_Verify {
         Assert.assertEquals(actualOrderDatDate,expectedDate, "Date is not matching the data!!!");
     }
 
+    @Test
+    public void test2_use_order_verify_method(){
+
+        //call the utility method we created
+
+        String alexandraGray = WebOrderUtils.returnOrderDate(driver, "Alexandra Gray");
+        System.out.println("alexandraGray = " + alexandraGray);
+
+
+        String bartFisher = WebOrderUtils.returnOrderDate(driver, "Bart Fisher");
+        System.out.println("bartFisher = " + bartFisher);
+
+    }
+
+    @Test
+    public void test3(){
+
+        WebOrderUtils.orderVerify(driver,"Bob Martin","12/31/2021");
+
+
+    }
+
+
 }
-
-/*
-
- */
