@@ -14,49 +14,44 @@ import java.util.Set;
 
 public class BrowserUtils {
 
-    public static void sleep(int second) {
-
     /*
-    This method will accept in (in seconds) and execute Thread.sleep method for given duration Arg : int second
+    This method will accept int (in seconds)
+    and execute Thread.sleep method for given duration
+    Arg: int second
      */
-
+    public static void sleep(int second){
         second *= 1000;
-        try {
+        try{
             Thread.sleep(second);
-        } catch (InterruptedException e) {
-
+        }catch (InterruptedException e){
 
         }
     }
 
-    public static void switchWindowAndVerify(WebDriver driver, String expectedInURL, String expectedTitle){
+    public static void switchWindowAndVerify(WebDriver driver, String expectedInURL, String expectedInTitle){
 
-        // Return and store all window handles in a set
+        //Return and store all window handles in a Set.
         Set<String> allWindowHandles = driver.getWindowHandles();
 
-        for ( String each : allWindowHandles ) {
+        for (String each : allWindowHandles) {
 
             driver.switchTo().window(each);
-            System.out.println("Current URL = " + driver.getCurrentUrl());
+            System.out.println("Current URL: " + driver.getCurrentUrl());
 
-            if (driver.getCurrentUrl().contains(expectedInURL)){
+            if (driver.getCurrentUrl().contains(expectedInURL )){
                 break;
             }
         }
 
-        //5. Assert: Title contains “Etsy”
+        //5. Assert:Title contains “Etsy”
         String actualTitle = driver.getTitle();
-        Assert.assertTrue(actualTitle.contains(expectedTitle));
-
+        Assert.assertTrue(actualTitle.contains(expectedInTitle));
     }
-
 
     public static void verifyTitle(WebDriver driver, String expectedTitle){
         Assert.assertEquals(driver.getTitle(), expectedTitle);
     }
-
-    public static void verifyTitleContains(WebDriver driver, String expectedTitle){
-        Assert.assertTrue(driver.getTitle().contains(expectedTitle));
+    public static void verifyTitleContains(WebDriver driver, String expectedInTitle){
+        Assert.assertTrue(driver.getTitle().contains(expectedInTitle));
     }
-
 }

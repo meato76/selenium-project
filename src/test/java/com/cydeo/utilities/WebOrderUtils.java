@@ -1,5 +1,4 @@
 package com.cydeo.utilities;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,39 +21,40 @@ public class WebOrderUtils {
 
         return customerDateCell.getText();
 
+        /*
+        String middleName = "L";
+        String fullName = "Samuel"+ middleName +" Jackson";
+        System.out.println("fullName = " + fullName); //--> Samuel L Jackson
+        */
     }
+
+    // same method as above, but just in 1 line.
+//    public static String returnOrderDate(WebDriver driver, String customerName){
+//        return driver.findElement(By.xpath("//td[.='"+customerName+"']/following-sibling::td[3]")).getText();
+//    }
 
 
 
 
     //Method #2 info:
-    // • Name: orderVerify ()
+    //• Name: orderVerify ()
     //• Return type: void
     //• Arg1: WebDriver driver
-    // • Arg2: String costumerName
-   //• Arg3: String expectedOrderDate
-   // This method should accept above-mentioned arguments and internally assert expectedOrderDate matching actualOrderDate.
+    //• Arg2: String costumerName
+    //• Arg3: String expectedOrderDate
+    //This method should accept above arguments and internally assert expectedOrderDate matching actualOrderDate.
 
-    public static void orderVerify(WebDriver driver ,String customerName, String expectedOrderDate){
+    public static void orderVerify(WebDriver driver, String costumerName, String expectedOrderDate){
 
-        String locator =  "//td[.='"+customerName+ "']/following-sibling::td[3]";
+        String locator = "//td[.='"+ costumerName + "']/following-sibling::td[3]";
 
         WebElement customerDateCell = driver.findElement(By.xpath(locator));
 
-        String actualOderDate = customerDateCell.getText();
+        String actualOrderDate = customerDateCell.getText();
 
-        Assert.assertEquals(actualOderDate, expectedOrderDate);
+        Assert.assertEquals(actualOrderDate, expectedOrderDate);
+
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
